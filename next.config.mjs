@@ -9,6 +9,7 @@ try {
 const nextConfig = {
   output: 'export',
   basePath: '/Portfolio',
+  trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
