@@ -2,9 +2,12 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "resolutions": {
     "date-fns": "^2.28.0"
   },
+=======
+>>>>>>> 80076262c0a87bbec3f54c920193aa1b9c590d43
   "scripts": {
     "build": "next build",
     "export": "next export",
