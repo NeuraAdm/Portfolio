@@ -7,9 +7,8 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "DevPortfolio - Software Engineer",
+  title: "Juan-Dev-Portfolio",
   description: "Portfolio website for a software engineer showcasing projects and skills",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -18,9 +17,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es">
+      <head>
+        {/* Favicon */}
+        <link rel="icon" href="/perfil.jpg" type="image/png" />
+        {/* Metadata */}
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light">
           {children}
         </ThemeProvider>
       </body>

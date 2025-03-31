@@ -96,43 +96,39 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce platform built with Next.js, TypeScript, and Stripe integration.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
+      title: "Landing Page Corporativa",
+      description: "Una landing page corporativa para una empresa",
+      image: "/neura.png?height=400&width=300",
+      tags: ["Node.js", "TypeScript", "React", "Tailwind CSS"],
       category: "web",
-      link: "#",
-      github: "#",
+      link: "https://neuraadm.github.io/Neura/",
     },
     {
       id: 2,
-      title: "AI Content Generator",
-      description: "An AI-powered application that generates content based on user prompts using OpenAI's API.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "Node.js", "OpenAI", "MongoDB"],
-      category: "ai",
-      link: "#",
-      github: "#",
+      title: "Primora",
+      description: "Plataforma Web de Gestion Documental",
+      image: "/primora.png?height=400&width=300",
+      tags: ["PHP", "AJAX", "JavaScript", "CSS", "HTML"],
+      category: "app",
+      link: "https://primora.app/",
     },
     {
       id: 3,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates and team features.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "Firebase", "Redux", "Material UI"],
+      title: "Landing Page Empresarial",
+      description: "Una landing page empresarial para una empresa de SG-SST",
+      image: "/gestus.png?height=400&width=300",
+      tags: ["React", "Node.JS", "TypeScript", "Tailwind CSS"],
       category: "web",
-      link: "#",
-      github: "#",
+      link: "https://gestus-94579.web.app/",
     },
     {
       id: 4,
-      title: "Data Visualization Dashboard",
-      description: "An interactive dashboard for visualizing complex datasets with customizable charts and filters.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["D3.js", "React", "TypeScript", "Express"],
-      category: "data",
-      link: "#",
-      github: "#",
+      title: "Diseño Web",
+      description: "Diseño Web para un emprendimiento de Fotografia para Mascotas",
+      image: "/lakanu.png?height=400&width=300",
+      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      category: "web",
+      link: "https://lakanu-908cf.web.app/",
     },
   ]
 
@@ -344,8 +340,8 @@ export default function Portfolio() {
               <div className="flex justify-center">
                 <TabsList>
                   <TabsTrigger value="all">Todos</TabsTrigger>
-                  <TabsTrigger value="web">Web Apps</TabsTrigger>
-                  <TabsTrigger value="ai">WebPages</TabsTrigger>
+                  <TabsTrigger value="web">Webs</TabsTrigger>
+                  <TabsTrigger value="app">Web Apps</TabsTrigger>
                 </TabsList>
               </div>
 
@@ -367,10 +363,10 @@ export default function Portfolio() {
                 </div>
               </TabsContent>
 
-              <TabsContent value="ai" className="mt-8">
+              <TabsContent value="app" className="mt-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   {projects
-                    .filter((p) => p.category === "ai")
+                    .filter((p) => p.category === "app")
                     .map((project, index) => (
                       <ProjectCard key={project.id} project={project} index={index} />
                     ))}
@@ -423,13 +419,13 @@ export default function Portfolio() {
                   </div>
                   <div className="flex items-center">
                     <Github className="h-5 w-5 mr-4 text-primary" />
-                    <a href="#" className="hover:text-primary transition-colors">
+                    <a href="https://github.com/NeuraAdm" className="hover:text-primary transition-colors">
                       github.com/NeuraAdm
                     </a>
                   </div>
                   <div className="flex items-center">
                     <Linkedin className="h-5 w-5 mr-4 text-primary" />
-                    <a href="#" className="hover:text-primary transition-colors">
+                    <a href="https://www.linkedin.com/in/juan-pablo-a-a62719142" className="hover:text-primary transition-colors">
                       linkedin.com/in/Juan Pablo Arias
                     </a>
                   </div>
@@ -444,7 +440,33 @@ export default function Portfolio() {
               >
                 <Card>
                   <CardContent className="pt-6">
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={(e) => {
+                      e.preventDefault();
+                      
+                      // Validate form
+                      if (!formData.name || !formData.email || !formData.message) {
+                        setFormStatus("error");
+                        return;
+                      }
+
+                      // Construct WhatsApp message
+                      const message = `Vengo desde la web y estoy interesado en tus servicios.\n\nNombre: ${formData.name}\nEmail: ${formData.email}\nMensaje: ${formData.message}`;
+                      
+                      // Create WhatsApp URL (phone number without '+' sign)
+                      const whatsappUrl = `https://wa.me/573043591840?text=${encodeURIComponent(message)}`;
+                      
+                      // Open WhatsApp in a new tab
+                      window.open(whatsappUrl, '_blank');
+                      
+                      // Reset form
+                      setFormStatus("success");
+                      setFormData({ name: "", email: "", message: "" });
+                      
+                      // Reset form status after 3 seconds
+                      setTimeout(() => {
+                        setFormStatus(null);
+                      }, 3000);
+                    }} className="space-y-4">
                       <div>
                         <Input placeholder="Tu Nombre" name="name" value={formData.name} onChange={handleInputChange} />
                       </div>
@@ -480,7 +502,7 @@ export default function Portfolio() {
                       )}
 
                       <Button type="submit" className="w-full">
-                        Enviar Mensaje
+                        Enviar Mensaje por WhatsApp
                       </Button>
                     </form>
                   </CardContent>
@@ -500,25 +522,6 @@ export default function Portfolio() {
                 <span className="text-primary">Juan </span>Portfolio
               </Link>
             </div>
-
-            <div className="flex space-x-6">
-              <Button variant="ghost" size="icon" asChild>
-                <a href="#" aria-label="GitHub">
-                  <Github className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="#" aria-label="LinkedIn">
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="mailto:hello@devportfolio.com" aria-label="Email">
-                  <Mail className="h-5 w-5" />
-                </a>
-              </Button>
-            </div>
-
             <div className="mt-4 md:mt-0 text-sm text-muted-foreground">
               © {new Date().getFullYear()} Juan Portfolio. All rights reserved.
             </div>
@@ -573,16 +576,10 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           <div className="flex justify-between">
-            <Button variant="outline" size="sm" asChild>
-              <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                Code
-              </a>
-            </Button>
             <Button size="sm" asChild>
               <a href={project.link} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4 mr-2" />
-                Live Demo
+                Live
               </a>
             </Button>
           </div>
