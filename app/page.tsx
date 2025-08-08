@@ -107,7 +107,7 @@ export default function Portfolio() {
     },
     {
       id: 2,
-      title: "Aplicacion Primora",
+      title: "Aplicacion Documental Primora",
       description: "Plataforma Web de Gestion Documental",
       image: `${basePath}/primora.png?height=400&width=300`,
       tags: ["PHP", "AJAX", "JavaScript", "CSS", "HTML"],
