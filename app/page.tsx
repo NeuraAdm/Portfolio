@@ -25,10 +25,10 @@ export default function Portfolio() {
   })
   const [formStatus, setFormStatus] = useState<null | "success" | "error">(null)
 
-  const homeRef = useRef<HTMLElement>(null)
-  const aboutRef = useRef<HTMLElement>(null)
-  const projectsRef = useRef<HTMLElement>(null)
-  const contactRef = useRef<HTMLElement>(null)
+  const homeRef = useRef<HTMLElement | null>(null)
+  const aboutRef = useRef<HTMLElement | null>(null)
+  const projectsRef = useRef<HTMLElement | null>(null)
+  const contactRef = useRef<HTMLElement | null>(null)
 
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
@@ -89,7 +89,7 @@ export default function Portfolio() {
     }, 3000)
   }
 
-  const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
+  const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" })
   }
 
@@ -128,7 +128,34 @@ export default function Portfolio() {
       image: "/lakanu.png?height=400&width=300",
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       category: "web",
-      link: "https://lakanu-908cf.web.app/",
+      link: "https://lakanustudio.com",
+    },
+    {
+      id: 5,
+      title: "Diseño Web",
+      description: "Diseño Web para un emprendimiento de un Cafe/Bar",
+      image: "/cafe.png?height=400&width=300",
+      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      category: "web",
+      link: "https://cafe-elreloj.web.app/",
+    },
+    {
+      id: 6,
+      title: "Diseño Web",
+      description: "Diseño Web para una empresa de construccion con sede en Estados Unidos",
+      image: "/jireh.png?height=400&width=300",
+      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      category: "web",
+      link: "https://jireh-construction-llc.web.app/",
+    },
+    {
+      id: 7,
+      title: "Diseño Web",
+      description: "Diseño Web para una inmobiliaria con mostrario de propiedades",
+      image: "/oportuna.png?height=400&width=300",
+      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      category: "web",
+      link: "https://oportunainmobiliaria.com.co/",
     },
   ]
 
@@ -541,7 +568,7 @@ interface ProjectCardProps {
     tags: string[]
     category: string
     link: string
-    github: string
+    github?: string
   }
   index: number
 }

@@ -17,13 +17,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="light" style={{ colorScheme: "light" }}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/perfil.jpg" type="image/png" />
         {/* Metadata */}
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>{String(metadata.title) || "Juan-Dev-Portfolio"}</title>
+        <meta name="description" content={metadata.description || ""} />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
