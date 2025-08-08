@@ -6,11 +6,13 @@ try {
 }
 
 const isProd = process.env.NODE_ENV === 'production';
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: isProd ? '/Portfolio' : '',
+  basePath: isGitHubPages ? '/Portfolio' : '',
+  assetPrefix: isGitHubPages ? '/Portfolio' : '',
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,

@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { useTheme } from "next-themes"
 import Link from "next/link"
 import Image from "next/image"
+import { useBasePath } from "@/hooks/use-base-path"
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme()
@@ -24,6 +25,7 @@ export default function Portfolio() {
     message: "",
   })
   const [formStatus, setFormStatus] = useState<null | "success" | "error">(null)
+  const basePath = useBasePath()
 
   const homeRef = useRef<HTMLElement | null>(null)
   const aboutRef = useRef<HTMLElement | null>(null)
@@ -98,7 +100,7 @@ export default function Portfolio() {
       id: 1,
       title: "Landing Page Corporativa",
       description: "Una landing page corporativa para una empresa",
-      image: "/neura.png?height=400&width=300",
+      image: `${basePath}/neura.png?height=400&width=300`,
       tags: ["Node.js", "TypeScript", "React", "Tailwind CSS"],
       category: "web",
       link: "https://neuraadm.github.io/Neura/",
@@ -107,7 +109,7 @@ export default function Portfolio() {
       id: 2,
       title: "Aplicacion Primora",
       description: "Plataforma Web de Gestion Documental",
-      image: "/primora.png?height=400&width=300",
+      image: `${basePath}/primora.png?height=400&width=300`,
       tags: ["PHP", "AJAX", "JavaScript", "CSS", "HTML"],
       category: "app",
       link: "https://primora.app/",
@@ -116,7 +118,7 @@ export default function Portfolio() {
       id: 3,
       title: "Landing Page Empresarial",
       description: "Una landing page empresarial para una empresa de SG-SST",
-      image: "/gestus.png?height=400&width=300",
+      image: `${basePath}/gestus.png?height=400&width=300`,
       tags: ["React", "Node.JS", "TypeScript", "Tailwind CSS"],
       category: "web",
       link: "https://gestus-94579.web.app/",
@@ -125,7 +127,7 @@ export default function Portfolio() {
       id: 4,
       title: "Diseño Web",
       description: "Diseño Web para un emprendimiento de Fotografia para Mascotas",
-      image: "/lakanu.png?height=400&width=300",
+      image: `${basePath}/lakanu.png?height=400&width=300`,
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       category: "web",
       link: "https://lakanustudio.com",
@@ -134,7 +136,7 @@ export default function Portfolio() {
       id: 5,
       title: "Diseño Web",
       description: "Diseño Web para un emprendimiento de un Cafe/Bar",
-      image: "/cafe.png?height=400&width=300",
+      image: `${basePath}/cafe.png?height=400&width=300`,
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       category: "web",
       link: "https://cafe-elreloj.web.app/",
@@ -143,7 +145,7 @@ export default function Portfolio() {
       id: 6,
       title: "Diseño Web",
       description: "Diseño Web para una empresa de construccion con sede en Estados Unidos",
-      image: "/jireh.png?height=400&width=300",
+      image: `${basePath}/jireh.png?height=400&width=300`,
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       category: "web",
       link: "https://jireh-construction-llc.web.app/",
@@ -152,7 +154,7 @@ export default function Portfolio() {
       id: 7,
       title: "Diseño Web",
       description: "Diseño Web para una inmobiliaria con mostrario de propiedades",
-      image: "/oportuna.png?height=400&width=300",
+      image: `${basePath}/oportuna.png?height=400&width=300`,
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       category: "web",
       link: "https://oportunainmobiliaria.com.co/",
@@ -165,7 +167,7 @@ export default function Portfolio() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-            <Link href="/" className="text-xl font-bold">
+            <Link href={basePath || "/"} className="text-xl font-bold">
               <span className="text-primary">Juan </span>Portfolio
             </Link>
           </motion.div>
@@ -298,7 +300,7 @@ export default function Portfolio() {
                 viewport={{ once: true, margin: "-100px" }}
               >
                 <div className="relative w-full aspect-square max-w-md mx-auto overflow-hidden rounded-xl">
-                  <Image src="perfil.jpg?height=500&width=500" alt="Profile" fill className="object-cover" />
+                  <Image src={`${basePath}/perfil.jpg?height=500&width=500`} alt="Profile" fill className="object-cover" />
                 </div>
               </motion.div>
 
@@ -545,7 +547,7 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <Link href="/" className="text-xl font-bold">
+              <Link href={basePath || "/"} className="text-xl font-bold">
                 <span className="text-primary">Juan </span>Portfolio
               </Link>
             </div>
