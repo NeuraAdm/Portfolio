@@ -21,18 +21,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 1. Instalar pnpm primero es obligatorio para que Node lo detecte
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      # 2. Setup Node maneja la caché de pnpm automáticamente si se lo pides así
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm' 
+          # Quitamos totalmente la configuración de caché para evitar bloqueos
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
