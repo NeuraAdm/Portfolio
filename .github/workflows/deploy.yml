@@ -3,14 +3,13 @@ name: Deploy Next.js site to Pages
 on:
   push:
     branches: ["main"]
-  workflow_dispatch: # Te permite activar el despliegue a mano desde GitHub
+  workflow_dispatch: 
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Evita que se amontonen despliegues si subes código muchas veces seguidas
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -22,30 +21,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          # Quitamos la línea de cache de aquí
-
+      # 1. Instalar pnpm primero es obligatorio para que Node lo detecte
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
-          run_install: false # Evita conflictos iniciales
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
+      # 2. Setup Node maneja la caché de pnpm automáticamente si se lo pides así
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: 20
+          cache: 'pnpm' 
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
