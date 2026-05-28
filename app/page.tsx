@@ -15,6 +15,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useBasePath } from "@/hooks/use-base-path"
 import Tilt from "react-parallax-tilt"
+import { link } from "framer-motion/m";
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme()
@@ -123,67 +124,49 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "Landing Page Corporativa",
-      description: "Una landing page corporativa para una empresa",
+      title: "Website Corporativo",
+      description: "Website corporativo para mi empresa de Desarrollo de Software",
       image: `${basePath}neura.png?height=400&width=300`,
-      tags: ["Node.js", "TypeScript", "React", "Tailwind CSS"],
+      tags: ["React", "TypeScript", "Tailwind CSS"],
       category: "web",
-      link: "https://neuraadm.github.io/Neura/",
+      link: "https://neuracorp.com.co",
     },
     {
       id: 2,
-      title: "Aplicacion Documental Primora",
-      description: "Plataforma Web de Gestion Documental",
+      title: "Plataforma Multi-Tenant Primora",
+      description: "Plataforma Web de Sistemas de Gestion de Seguridad y Salud en el Trabajo",
       image: `${basePath}primora.png?height=400&width=300`,
-      tags: ["PHP", "AJAX", "JavaScript", "CSS", "HTML"],
+      tags: ["NestJS", "React", "PostgreSQL", "TailwindCSS", "Typescript"],
       category: "app",
       link: "https://primora.app/",
     },
     {
       id: 3,
-      title: "Landing Page Empresarial",
-      description: "Una landing page empresarial para una empresa de SG-SST",
+      title: "Website Empresarial",
+      description: "Un website empresarial para una empresa de SG-SST",
       image: `${basePath}gestus.png?height=400&width=300`,
-      tags: ["React", "Node.JS", "TypeScript", "Tailwind CSS"],
+      tags: ["React", "NextJS", "TypeScript", "Tailwind CSS"],
       category: "web",
-      link: "https://gestus-94579.web.app/",
+      link: "https://gestussolucionesintegrales.com",
     },
     {
       id: 4,
-      title: "Diseño Web",
-      description: "Diseño Web para un emprendimiento de Fotografia para Mascotas",
-      image: `${basePath}lakanu.png?height=400&width=300`,
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      category: "web",
-      link: "https://lakanustudio.com",
+      title: "Plataforma Saas de Gestion Ganadera",
+      description: "Plataforma Web-Saas Multi-Tenant de Gestion Ganadera para una empresa del sector agropecuario",
+      image: `${basePath}ganadera.png?height=400&width=300`,
+      tags: ["Python", "React", "FastAPI", "Tailwind CSS"],
+      category: "app",
+      link: "https://app.universodelcampo.com",
     },
     {
       id: 5,
-      title: "Diseño Web",
-      description: "Diseño Web para un emprendimiento de un Cafe/Bar",
-      image: `${basePath}cafe.png?height=400&width=300`,
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      title: "Website de la Plataforma Ganadera",
+      description: "Website para la plataforma de gestión ganadera",
+      image: `${basePath}ganadera.png?height=400&width=300`,
+      tags: ["React", "NextJS", "TypeScript", "Tailwind CSS"],
       category: "web",
-      link: "https://cafe-elreloj.web.app/",
-    },
-    {
-      id: 6,
-      title: "Diseño Web",
-      description: "Diseño Web para una empresa de construccion con sede en Estados Unidos",
-      image: `${basePath}jireh.png?height=400&width=300`,
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      category: "web",
-      link: "https://jireh-construction-llc.web.app/",
-    },
-    {
-      id: 7,
-      title: "Diseño Web",
-      description: "Diseño Web para una inmobiliaria con mostrario de propiedades",
-      image: `${basePath}oportuna.png?height=400&width=300`,
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      category: "web",
-      link: "https://oportunainmobiliaria.com.co/",
-    },
+      link: "https://universodelcampo.com",
+    }
   ]
 
   return (
@@ -423,13 +406,13 @@ export default function Portfolio() {
                   </div>
                   
                   {/* Tech stack badges floating around */}
-                  {["React", "Node.js", "TypeScript", "PHP", "MySQL"].map((tech, i) => (
+                  {["React", "Node.js", "TypeScript", "NestJS", "Python", "Javascript", "FastAPI"].map((tech, i) => (
                     <motion.div
                       key={tech}
                       className="absolute glass px-3 py-1 rounded-full text-sm font-medium"
                       style={{
-                        left: `${50 + 40 * Math.cos((i * 2 * Math.PI) / 5)}%`,
-                        top: `${50 + 40 * Math.sin((i * 2 * Math.PI) / 5)}%`,
+                        left: `${50 + 40 * Math.cos((i * 2 * Math.PI) / 7)}%`,
+                        top: `${50 + 40 * Math.sin((i * 2 * Math.PI) / 7)}%`,
                         transform: "translate(-50%, -50%)",
                       }}
                       animate={{
@@ -530,7 +513,7 @@ export default function Portfolio() {
                   <p className="text-muted-foreground leading-relaxed">
                     Aplicando las mejores prácticas de desarrollo y gestión de proyectos, transformo ideas en 
                     realidad dentro de la era de innovación digital, con enfoque en <span className="text-secondary font-semibold">arquitectura robusta</span> y 
-                    experiencias de usuario excepcionales.
+                    system design robusto.
                   </p>
                 </div>
 
@@ -554,11 +537,11 @@ export default function Portfolio() {
                       </li>
                       <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                        Tailwind CSS
+                        Javascript
                       </li>
                       <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                        Node.js
+                        VueJS
                       </li>
                     </ul>
                   </motion.div>
@@ -574,19 +557,19 @@ export default function Portfolio() {
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                        PHP
+                        NestJS(JS/TS)
                       </li>
                       <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                        AJAX
+                        Python(FastAPI, Django)
                       </li>
                       <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                        MySQL
+                        NodeJS
                       </li>
                       <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                        API REST
+                        Express
                       </li>
                     </ul>
                   </motion.div>
@@ -727,37 +710,38 @@ export default function Portfolio() {
               {[
                 {
                   year: "2024 - Presente",
-                  title: "Arquitecto de Software Freelance",
+                  title: "Arquitecto de Software/Desarrollador Full Stack Freelance",
                   company: "Independiente",
                   description: "Desarrollo de soluciones web escalables y gestión de proyectos para diversos clientes, implementando arquitecturas robustas y código limpio.",
                   achievements: [
-                    "Desarrollo de +7 proyectos web exitosos",
-                    "Implementación de arquitecturas escalables",
-                    "Mentoría y liderazgo técnico"
+                    "Desarrollo de multiples proyectos web exitosos",
+                    "Implementación de arquitecturas escalables aplicadas a Plataformas Web",
+                    "Mentoría y liderazgo técnico frente a resolucion de problemas complejos"
                   ]
                 },
                 {
-                  year: "2023 - 2024",
-                  title: "Desarrollador Full Stack",
-                  company: "Proyectos Diversos",
-                  description: "Creación de aplicaciones web modernas utilizando React, Next.js, TypeScript y PHP, con enfoque en experiencia de usuario y performance.",
-                  achievements: [
-                    "Landing pages corporativas de alto impacto",
-                    "Aplicaciones de gestión documental",
-                    "Integración con APIs y servicios externos"
-                  ]
-                },
-                {
-                  year: "2022 - 2023",
+                  year: "2024 - 2028",
                   title: "Formación en Ingeniería de Software",
                   company: "Estudios Universitarios",
                   description: "Profundización en fundamentos de programación, estructuras de datos, algoritmos y patrones de diseño.",
                   achievements: [
-                    "Fundamentos sólidos en CS",
-                    "Desarrollo de proyectos académicos",
-                    "Aprendizaje continuo de tecnologías"
+                    "Fundamentos sólidos en lenguajes de Programacion",
+                    "Desarrollo de proyectos académicos aplicado a soluciones reales",
+                    "Aprendizaje continuo de tecnologías de vanguardia"
                   ]
-                }
+                },
+                {
+                  year: "2023 - 2024",
+                  title: "Desarrollador Junior/Mid-Level",
+                  company: "Proyectos Diversos",
+                  description: "Creación de aplicaciones web modernas utilizando React, Next.js, Javascript y PHP, con enfoque en experiencia de usuario y performance.",
+                  achievements: [
+                    "Landing pages corporativas de alto impacto",
+                    "Aplicaciones de gestión documental/SaaS",
+                    "Integración con APIs y servicios externos"
+                  ]
+                },
+                
               ].map((item, index) => (
                 <motion.div
                   key={index}
